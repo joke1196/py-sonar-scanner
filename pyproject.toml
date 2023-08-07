@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "py-sonar-scanner_SONAR_SOURCE"
+name = "py-sonar-scanner_DAVID_K"
 version = "0.0.1"
 authors = [
   { name="Guillaume Dequenne", email="guillaume.dequenne@sonarsource.com" },
