@@ -12,6 +12,7 @@ authors = [
 ]
 description = "Sonar Scanner for the Python Ecosystem"
 readme = "README.md"
+license = {file = "LICENSE"}
 requires-python = ">=3.9"
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -19,6 +20,10 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+
 [project.urls]
 "Homepage" = "https://github.com/joke1196/py-sonar-scanner"
 "Bug Tracker" = "https://github.com/joke1196/py-sonar-scanner/issues"
+
+[project.scripts]
+"sonar-scanner" = "py_sonar_scanner_DAVID_K.main:scan"
