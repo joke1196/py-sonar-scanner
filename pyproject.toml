@@ -20,5 +20,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "TBD"
-"Bug Tracker" = "TBD"
+"Homepage" = "https://github.com/joke1196/py-sonar-scanner"
+"Bug Tracker" = "https://github.com/joke1196/py-sonar-scanner/issues"
