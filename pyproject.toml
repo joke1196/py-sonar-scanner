@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "py-sonar-scanner_DAVID_K"
-version = "0.0.1"
+dynamic = ["version"]
 authors = [
   { name="Guillaume Dequenne", email="guillaume.dequenne@sonarsource.com" },
   { name="Maksim Grebeniuk", email="maksim.grebeniuk@sonarsource.com" },
@@ -16,7 +16,6 @@ license = {file = "LICENSE"}
 requires-python = ">=3.9"
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
 
@@ -27,3 +26,7 @@ classifiers = [
 
 [project.scripts]
 "sonar-scanner" = "py_sonar_scanner_DAVID_K.main:scan"
+
+
+[tool.hatch.version]
+path = "src/py_sonar_scanner_DAVID_K/__init__.py"
