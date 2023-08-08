@@ -1,5 +1,5 @@
 import argparse
-from src.py_sonar_scanner_DAVID_K.context import Context
+from context import Context
 
 
 class ConfigurationPropertiesConfig:

@@ -4,7 +4,7 @@ import shutil
 import urllib.request
 import zipfile
 
-from src.py_sonar_scanner_DAVID_K.context import Context
+from context import Context
 
 systems = {
     'Darwin': 'macosx',
@@ -13,12 +13,12 @@ systems = {
 
 class ScannerConfig:
     def setup(self, ctx: Context):
+        system_name = systems.get(platform.uname().system, 'linux')
+
         if os.path.exists(ctx.sonar_scanner_path):
             shutil.rmtree(ctx.sonar_scanner_path)
 
         os.mkdir(ctx.sonar_scanner_path)
-
-        system_name = systems.get(platform.uname().system, 'linux')
 
         # Download the binaries and unzip them
         # https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${version}-${os}.zip
@@ -32,8 +32,11 @@ class ScannerConfig:
 
         os.remove(scanner_zip_path)
 
-        ctx.scanner_bin_path = os.path.join(ctx.sonar_scanner_path, f'sonar-scanner-{ctx.sonar_scanner_version}-{system_name}', 'bin', 'sonar-scanner')
-        print(ctx.scanner_bin_path)
+        ctx.sonar_scanner_executable_path = os.path.join(ctx.sonar_scanner_path, f'sonar-scanner-{ctx.sonar_scanner_version}-{system_name}', 'bin', 'sonar-scanner')
+
+        os.system(f'chmod -R 777 {ctx.sonar_scanner_path}')
+        os.system(f'chmod +x {ctx.sonar_scanner_executable_path}')
+        print(ctx.sonar_scanner_executable_path)
 
 
 class EnvironmentConfig:
