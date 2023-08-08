@@ -11,6 +11,7 @@ systems = {
     'Windows': 'windows'
 }
 
+
 class ScannerConfig:
     def setup(self, ctx: Context):
         system_name = systems.get(platform.uname().system, 'linux')
@@ -23,7 +24,8 @@ class ScannerConfig:
 
         self._change_permissions_recursive(ctx.sonar_scanner_path, 0o777)
 
-        sonar_scanner_home = os.path.join(ctx.sonar_scanner_path, f'sonar-scanner-{ctx.sonar_scanner_version}-{system_name}')
+        sonar_scanner_home = os.path.join(ctx.sonar_scanner_path,
+                                          f'sonar-scanner-{ctx.sonar_scanner_version}-{system_name}')
         ctx.sonar_scanner_executable_path = os.path.join(sonar_scanner_home, 'bin', 'sonar-scanner')
         print(ctx.sonar_scanner_executable_path)
 
@@ -48,6 +50,7 @@ class ScannerConfig:
                 os.chmod(dir, mode)
             for file in [os.path.join(root, f) for f in files]:
                 os.chmod(file, mode)
+
 
 class EnvironmentConfig:
     def setup(self, ctx: Context):
