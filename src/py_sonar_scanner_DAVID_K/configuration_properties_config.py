@@ -25,12 +25,12 @@ class ConfigurationPropertiesConfig:
             help="Verbosity (-v, -vv, etc)")
 
         # Specify output of "--version"
-        parser.add_argument(
-            "--version",
-            action="version",
-            version="%(prog)s (version {version})".format(version=__version__))
+        # parser.add_argument(
+        #     "--version",
+        #     action="version",
+        #     version="%(prog)s (version {version})".format(version=__version__))
 
-        args = parser.parse_args()
+        # args = parser.parse_args()
 
         ctx.sonar_scanner_version = '4.6.2.2472'
         ctx.sonar_scanner_path = '.scanner'
