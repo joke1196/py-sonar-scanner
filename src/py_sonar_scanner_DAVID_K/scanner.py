@@ -7,7 +7,6 @@ from context import Context
 
 class Scanner:
     def scan(self, ctx: Context):
-        command = os.path.join(ctx.sonar_scanner_executable_path, 'sonar-scanner')
         scan_args = []
         if scan_args is None:
             scan_args = []
