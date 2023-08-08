@@ -6,10 +6,10 @@ Module Docstring
 __author__ = "Python Squad"
 __version__ = "0.1.0"
 
-from configuration_properties_config import ConfigurationPropertiesConfig
-from context import Context
-from environment_config import EnvironmentConfig
-from scanner import Scanner
+from py_sonar_scanner_DAVID_K.configuration_properties_config import ConfigurationPropertiesConfig
+from py_sonar_scanner_DAVID_K.context import Context
+from py_sonar_scanner_DAVID_K.environment_config import EnvironmentConfig
+from py_sonar_scanner_DAVID_K.scanner import Scanner
 
 
 def scan():
