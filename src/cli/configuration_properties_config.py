@@ -1,4 +1,5 @@
 import argparse
+import os.path
 import sys
 
 import toml
@@ -44,6 +45,10 @@ class ConfigurationPropertiesConfig:
             if arg.startswith("-D"):
                 scan_arguments.append(arg)
 
+        ctx.scan_arguments = scan_arguments
+        if not os.path.isfile('pyproject.toml'):
+            return
+
         with open('pyproject.toml', 'r') as file:
             # TODO: actually search for pyproject.toml
             toml_data = file.read()
@@ -53,8 +58,6 @@ class ConfigurationPropertiesConfig:
                 sonar_properties = parsed_data['sonar']
                 for key, value in sonar_properties.items():
                     add_parameter_to_scanner_args(scan_arguments, key, value)
-
-        ctx.scan_arguments = scan_arguments
 
 
 def add_parameter_to_scanner_args(scan_arguments: list[str], key: str, value: str | dict):
