@@ -29,7 +29,7 @@ classifiers = [
 
 
 [tool.hatch.version]
-path = "src/cli/__init__.py"
+path = "src/cli/__about__.py"
 
 
 [tool.hatch.build.targets.wheel]
