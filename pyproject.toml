@@ -29,7 +29,7 @@ dependencies = [
 "Bug Tracker" = "https://github.com/joke1196/py-sonar-scanner/issues"
 
 [project.scripts]
-"py-sonar-scanner" = "cli.main:scan"
+"py-sonar-scanner" = "cli.__main__:scan"
 
 
 [tool.hatch.version]
