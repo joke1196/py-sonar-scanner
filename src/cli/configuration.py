@@ -1,6 +1,7 @@
 import argparse
 import os
 import sys
+from typing import Union
 
 import toml
 
@@ -66,7 +67,7 @@ class Configuration:
 
         self.scan_arguments = scan_arguments
 
-    def _add_parameter_to_scanner_args(self, scan_arguments: list[str], key: str, value: str | dict):
+    def _add_parameter_to_scanner_args(self, scan_arguments: list[str], key: str, value: Union[str, dict]):
         if isinstance(value, str):
             scan_arguments.append(f"-Dsonar.{key}={value}")
         if isinstance(value, dict):
