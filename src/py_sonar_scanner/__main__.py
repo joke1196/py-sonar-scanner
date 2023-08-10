@@ -5,8 +5,8 @@ Module Docstring
 __author__ = "Python Squad"
 __version__ = "0.1.0"
 
-from cli.configuration import Configuration
-from cli.environment import Environment
+from py_sonar_scanner.configuration import Configuration
+from py_sonar_scanner.environment import Environment
 
 
 def scan():
