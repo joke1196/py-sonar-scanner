@@ -1,7 +1,7 @@
 import subprocess
 import threading
 
-from cli.configuration import Configuration
+from py_sonar_scanner.configuration import Configuration
 
 
 class Scanner:

@@ -1,12 +1,11 @@
 import os
 import platform
 import shutil
-import subprocess
 import urllib.request
 import zipfile
 
-from cli.configuration import Configuration
-from cli.scanner import Scanner
+from py_sonar_scanner.configuration import Configuration
+from py_sonar_scanner.scanner import Scanner
 
 systems = {
     'Darwin': 'macosx',

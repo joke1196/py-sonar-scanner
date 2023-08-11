@@ -48,24 +48,36 @@ class Configuration:
         # args = parser.parse_args()
 
         scan_arguments = []
+        scan_arguments.extend(self._read_jvm_args())
+        scan_arguments.extend(self._read_toml_args())
+
+        self.scan_arguments = scan_arguments
+
+    def _read_jvm_args(self) -> list[str]:
+        scan_arguments = []
         for arg in sys.argv:
             if arg.startswith("-D"):
                 scan_arguments.append(arg)
+        return scan_arguments
 
-        if not os.path.isfile('pyproject.toml'):
-            return
+    def _read_toml_args(self) -> list[str]:
+        scan_arguments = []
+        try:
+            if os.path.isfile('pyproject.toml'):
+                with open('pyproject.toml', 'r') as file:
+                    # TODO: actually search for pyproject.toml
+                    toml_data = file.read()
+                    parsed_data = toml.loads(toml_data)
+                    print(parsed_data)
+                    if 'sonar' in parsed_data:
+                        sonar_properties = parsed_data['sonar']
+                        for key, value in sonar_properties.items():
+                            self._add_parameter_to_scanner_args(scan_arguments, key, value)
+        except BaseException as e:
+            print(e)
+        return  scan_arguments
 
-        with open('pyproject.toml', 'r') as file:
-            # TODO: actually search for pyproject.toml
-            toml_data = file.read()
-            parsed_data = toml.loads(toml_data)
-            print(parsed_data)
-            if 'sonar' in parsed_data:
-                sonar_properties = parsed_data['sonar']
-                for key, value in sonar_properties.items():
-                    self._add_parameter_to_scanner_args(scan_arguments, key, value)
 
-        self.scan_arguments = scan_arguments
 
     def _add_parameter_to_scanner_args(self, scan_arguments: list[str], key: str, value: Union[str, dict]):
         if isinstance(value, str):
