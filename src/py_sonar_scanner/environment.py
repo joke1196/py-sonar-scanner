@@ -12,10 +12,13 @@ systems = {
     'Windows': 'windows'
 }
 
+
 class Environment:
     cfg: Configuration
+
     def __init__(self, cfg: Configuration):
         self.cfg = cfg
+
     def setup(self):
         self.cleanup()
         if self._is_sonar_scanner_on_path():
@@ -24,11 +27,10 @@ class Environment:
             system_name = systems.get(platform.uname().system, 'linux')
             self._install_scanner(system_name)
             sonar_scanner_home = os.path.join(self.cfg.sonar_scanner_path,
-                                          f'sonar-scanner-{self.cfg.sonar_scanner_version}-{system_name}')
+                                              f'sonar-scanner-{self.cfg.sonar_scanner_version}-{system_name}')
             self.cfg.sonar_scanner_executable_path = os.path.join(sonar_scanner_home, 'bin', 'sonar-scanner')
 
         print(self.cfg.sonar_scanner_executable_path)
-
 
     def _install_scanner(self, system_name: str):
         os.mkdir(self.cfg.sonar_scanner_path)
@@ -46,7 +48,6 @@ class Environment:
 
     def _is_sonar_scanner_on_path(self) -> bool:
         return shutil.which('sonar-scanner') is not None
-
 
     def cleanup(self):
         if os.path.exists(self.cfg.sonar_scanner_path):

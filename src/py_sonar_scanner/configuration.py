@@ -75,9 +75,7 @@ class Configuration:
                             self._add_parameter_to_scanner_args(scan_arguments, key, value)
         except BaseException as e:
             print(e)
-        return  scan_arguments
-
-
+        return scan_arguments
 
     def _add_parameter_to_scanner_args(self, scan_arguments: list[str], key: str, value: Union[str, dict]):
         if isinstance(value, str):
