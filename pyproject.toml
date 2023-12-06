@@ -20,8 +20,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "toml>=0.10.2",
-    "argparse>=1.4.0",
+    "toml>=0.10.2"
 ]
 
 [project.urls]
