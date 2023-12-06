@@ -40,7 +40,6 @@ path = "src/py_sonar_scanner/__about__.py"
 only-include = ["src/py_sonar_scanner"]
 sources = ["src"]
 
-
 [tool.hatch.envs.test]
 dependencies = [
   "coverage[toml]",
@@ -55,7 +54,6 @@ cov = 'pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=tests'
 
 [[tool.hatch.envs.test.matrix]]
 python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
-
 
 [tool.hatch.envs.tool]
 dependencies = [
