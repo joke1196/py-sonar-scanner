@@ -1,3 +1,5 @@
+This repository is archived and was moved [here](https://github.com/SonarSource/sonar-scanner-python) 
+
 # py-sonar-scanner
 
 # Installation 
